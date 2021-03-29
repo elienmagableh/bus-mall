@@ -96,7 +96,7 @@ function handelClick(event){
         ulEl.appendChild(liEl);
       }
       imagesSec.removeEventListener('click', handelClick);
-      
+      chartRender();
     }
   }
 }
@@ -104,3 +104,31 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 render();
+
+function chartRender() {
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let chart = new Chart(ctx, {
+    
+    type: 'bar',
+
+    
+    data: {
+      labels: names,
+      datasets: [{
+        label: 'votes',
+        backgroundColor: 'pink',
+        borderColor: 'rgb(255, 99, 132)',
+        data: votes
+      },
+      {
+        label: 'views',
+        backgroundColor:'yellow' ,
+        borderColor: 'rgb(255, 99, 132)',
+        data: views
+      }]
+    },
+
+    
+    options: {}
+  });
+}
